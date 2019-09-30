@@ -1,4 +1,5 @@
 class Pessoa:
+    olhos = 2  # atributo defalt ou atributo de classe
     def __init__(self, *filhos, nome=None, idade=35): # se utilizar Alt+Enter o pycharm ja adiciona altomaticamente o atributo a Self
         self.idade = idade
         self.nome = nome #Atributo de passagem de parametros
@@ -16,6 +17,14 @@ if __name__ == '__main__':
     for filho in luciano.filhos:
         print(filho.nome)
     luciano.sobrenome = 'Ramalho' #atributo dinamico
-    print(luciano.__dict__)
+    del  luciano.filhos
+    luciano.olhos = 1
+    del luciano.olhos
+    print(luciano.__dict__)#mostra os atributos de instancia do objeto
     print(renzo.__dict__)
+    Pessoa.olhos = 3
+    print(Pessoa.olhos)
+    print(luciano.olhos)
+    print(renzo.olhos)
+    print(id(Pessoa.olhos), id(luciano.olhos), id(renzo.olhos))
 
